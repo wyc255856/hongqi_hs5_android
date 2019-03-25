@@ -25,7 +25,7 @@ import android.widget.Toast;
 import com.baidu.che.codriversdk.manager.CdCarInfoQueryManager;
 import com.faw.hs5.util.LibIOUtil;
 import com.faw.hs5.util.LogUtil;
-import com.faw.hs5.util.EVManuaConfig;
+import com.faw.hs5.util.HS5ManuaConfig;
 import com.faw.hs5.util.HS5NativeInterface;
 import com.faw.hs5.util.HS5SharedpreferencesUtil;
 import com.wyc.c217_car.R;
@@ -125,7 +125,7 @@ public class HS5ManualWebActivity extends Activity {
                     public void run() {
                         Intent intent = new Intent(HS5ManualWebActivity.context, HS5ManuaSetActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                        intent.putExtra("url", EVManuaConfig.getManuaUrl(HS5ManualWebActivity.context) + "/pages/voiceSearch.html?model=EV&car_version=" + HS5SharedpreferencesUtil.getCarModel(context) + "&keyWord=" + feature.replaceAll(" ", ","));
+                        intent.putExtra("url", HS5ManuaConfig.getManuaUrl(HS5ManualWebActivity.context) + "/pages/voiceSearch.html?model=EV&car_version=" + HS5SharedpreferencesUtil.getCarModel(context) + "&keyWord=" + feature.replaceAll(" ", ","));
                         HS5ManualWebActivity.context.startActivity(intent);
 
                     }
@@ -149,7 +149,7 @@ public class HS5ManualWebActivity extends Activity {
                 super.onReceivedError(view, request, error);
                 isError = true;
                 if (isError) {
-                    if (webView.getUrl().equals(EVManuaConfig.getManuaUrl(HS5ManualWebActivity.this) + "?upLoad=" + (EVManuaConfig.VERSION.equals(HS5SharedpreferencesUtil.getVersion(context)) ? "0" : "1"))) {
+                    if (webView.getUrl().equals(HS5ManuaConfig.getManuaUrl(HS5ManualWebActivity.this) + "?upLoad=" + (HS5ManuaConfig.VERSION.equals(HS5SharedpreferencesUtil.getVersion(context)) ? "0" : "1"))) {
                         error_view.setVisibility(View.VISIBLE);
                         error_alert.setVisibility(View.VISIBLE);
                         webView.setEnabled(true);// 当加载网页的时候将网页进行隐藏
@@ -170,7 +170,7 @@ public class HS5ManualWebActivity extends Activity {
                 webView.loadUrl("javascript:itemLoaderHide()");
                 if (isError) {
 
-                    if (webView.getUrl().equals(EVManuaConfig.getManuaUrl(HS5ManualWebActivity.this) + "?upLoad=" + (EVManuaConfig.VERSION.equals(HS5SharedpreferencesUtil.getVersion(context)) ? "0" : "1"))) {
+                    if (webView.getUrl().equals(HS5ManuaConfig.getManuaUrl(HS5ManualWebActivity.this) + "?upLoad=" + (HS5ManuaConfig.VERSION.equals(HS5SharedpreferencesUtil.getVersion(context)) ? "0" : "1"))) {
                         error_view.setVisibility(View.VISIBLE);
                         error_alert.setVisibility(View.VISIBLE);
                         webView.setEnabled(true);// 当加载网页的时候将网页进行隐藏
@@ -183,7 +183,7 @@ public class HS5ManualWebActivity extends Activity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 LogUtil.logError("url = " + url);
-                LogUtil.logError("url = " + EVManuaConfig.getManuaUrl(HS5ManualWebActivity.this));
+                LogUtil.logError("url = " + HS5ManuaConfig.getManuaUrl(HS5ManualWebActivity.this));
                 if (url != null) {
                     if (!url.contains("mp4")) {
                         LogUtil.logError("url = vr");
@@ -200,16 +200,16 @@ public class HS5ManualWebActivity extends Activity {
                     return true;
                 }
 //                if ("0".equals(HS5SharedpreferencesUtil.getCarMode(HS5ManualWebActivity.this))) {
-//                    LogUtil.logError("EVManuaConfig.getManuaUrl(context) = " + EVManuaConfig.getManuaUrl(context));
+//                    LogUtil.logError("HS5ManuaConfig.getManuaUrl(context) = " + HS5ManuaConfig.getManuaUrl(context));
 //                    view.loadUrl("file:///"+ LibIOUtil.getDefaultPath(context)+"C217_1");
 //                } else {
-//                    LogUtil.logError("EVManuaConfig.getManuaUrl(context) = " + EVManuaConfig.getManuaUrl(context));
-//                    view.loadUrl(EVManuaConfig.getManuaUrl(context));
+//                    LogUtil.logError("HS5ManuaConfig.getManuaUrl(context) = " + HS5ManuaConfig.getManuaUrl(context));
+//                    view.loadUrl(HS5ManuaConfig.getManuaUrl(context));
 ////            webView.loadUrl("http://www.haoweisys.com/C217/C217_1");
 //                }
                 LogUtil.logError("url = " + url);
-                LogUtil.logError("url = " + EVManuaConfig.getManuaUrl(HS5ManualWebActivity.this));
-//                if (url.equals(EVManuaConfig.getManuaUrl(HS5ManualWebActivity.this) + "/") || url.equals("file:///storage/emulated/0/manua/com.wyc.zhangsan.htmlapi/C217_1/index.html")) {
+                LogUtil.logError("url = " + HS5ManuaConfig.getManuaUrl(HS5ManualWebActivity.this));
+//                if (url.equals(HS5ManuaConfig.getManuaUrl(HS5ManualWebActivity.this) + "/") || url.equals("file:///storage/emulated/0/manua/com.wyc.zhangsan.htmlapi/C217_1/index.html")) {
 //                    findViewById(R.id.back_icon).setVisibility(View.GONE);
 //                } else {
 //                    findViewById(R.id.back_icon).setVisibility(View.VISIBLE);
@@ -294,12 +294,12 @@ public class HS5ManualWebActivity extends Activity {
 //        webView.loadUrl("file:///android_asset/index.html");
 
         if ("0".equals(HS5SharedpreferencesUtil.getCarMode(this))) {
-            LogUtil.logError("EVManuaConfig.getManuaUrl(context) = " + "file://" + LibIOUtil.getDefaultPath(context) + HS5SharedpreferencesUtil.getModelLocal(HS5ManualWebActivity.this) + "/index.html" + "?upLoad=" + (EVManuaConfig.VERSION.equals(HS5SharedpreferencesUtil.getVersion(this)) ? "0" : "1"));
-            webView.loadUrl("file://" + LibIOUtil.getDefaultPath(context) + HS5SharedpreferencesUtil.getModelLocal(HS5ManualWebActivity.this) + "/index.html" + "?upLoad=" + (EVManuaConfig.VERSION.equals(HS5SharedpreferencesUtil.getVersion(this)) ? "0" : "1"));
+            LogUtil.logError("HS5ManuaConfig.getManuaUrl(context) = " + "file://" + LibIOUtil.getDefaultPath(context) + HS5SharedpreferencesUtil.getModelLocal(HS5ManualWebActivity.this) + "/index.html" + "?upLoad=" + (HS5ManuaConfig.VERSION.equals(HS5SharedpreferencesUtil.getVersion(this)) ? "0" : "1"));
+            webView.loadUrl("file://" + LibIOUtil.getDefaultPath(context) + HS5SharedpreferencesUtil.getModelLocal(HS5ManualWebActivity.this) + "/index.html" + "?upLoad=" + (HS5ManuaConfig.VERSION.equals(HS5SharedpreferencesUtil.getVersion(this)) ? "0" : "1"));
         } else {
-            LogUtil.logError("EVManuaConfig.getManuaUrl(context) = " + EVManuaConfig.getManuaUrl(context));
+            LogUtil.logError("HS5ManuaConfig.getManuaUrl(context) = " + HS5ManuaConfig.getManuaUrl(context));
 //            webView.loadUrl("file://" + LibIOUtil.getDefaultPath(context) + "C217_1/index.html");
-            webView.loadUrl(EVManuaConfig.getManuaUrl(context) + "?upLoad=" + (EVManuaConfig.VERSION.equals(HS5SharedpreferencesUtil.getVersion(this)) ? "0" : "1"));
+            webView.loadUrl(HS5ManuaConfig.getManuaUrl(context) + "?upLoad=" + (HS5ManuaConfig.VERSION.equals(HS5SharedpreferencesUtil.getVersion(this)) ? "0" : "1"));
 //            webView.loadUrl("http://www.haoweisys.com/C217/C217_1");
         }
 //        webView.loadUrl("http://www.haoweisys.com/EVTEST/EVTEST_1/"+"?upLoad=1");
@@ -433,7 +433,7 @@ public class HS5ManualWebActivity extends Activity {
 //
 //                Intent intent = new Intent(HS5ManualWebActivity.context, HS5ManuaSetActivity.class);
 //                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//                intent.putExtra("url", EVManuaConfig.getManuaUrl(HS5ManualWebActivity.context) + "/pages/voiceSearch.html?model=C217&car_version=" + HS5SharedpreferencesUtil.getCarModel(context) + "&keyWord=" + feature.replaceAll(" ", ","));
+//                intent.putExtra("url", HS5ManuaConfig.getManuaUrl(HS5ManualWebActivity.context) + "/pages/voiceSearch.html?model=C217&car_version=" + HS5SharedpreferencesUtil.getCarModel(context) + "&keyWord=" + feature.replaceAll(" ", ","));
 //                HS5ManualWebActivity.context.startActivity(intent);
 //                return false;
 //            }

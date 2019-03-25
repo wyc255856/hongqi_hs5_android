@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.faw.hs5.util.FireUtil;
 import com.faw.hs5.util.GetPostUrl;
 import com.faw.hs5.util.LogUtil;
-import com.faw.hs5.util.EVManuaConfig;
+import com.faw.hs5.util.HS5ManuaConfig;
 import com.faw.hs5.util.HS5SharedpreferencesUtil;
 import com.wyc.c217_car.R;
 
@@ -65,7 +65,7 @@ public class HS5ManuaWelecomActivity extends HS5BaseActivity {
                 String result = GetPostUrl.get("http://www.e-guides.faw.cn/ev_admin/index.php?m=home&c=index&a=get_new_version&car_type=1");
                 LogUtil.logError("result = " + result);
                 HS5SharedpreferencesUtil.setVersion(HS5ManuaWelecomActivity.this, result);
-                EVManuaConfig.VERSION = result;
+                HS5ManuaConfig.VERSION = result;
             }
         }.start();
 

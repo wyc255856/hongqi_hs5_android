@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
-import com.faw.hs5.util.EVManuaConfig;
+import com.faw.hs5.util.HS5ManuaConfig;
 import com.faw.hs5.util.HS5SharedpreferencesUtil;
 import com.gh1.ghdownload.DownloadManager;
 
@@ -42,14 +42,14 @@ public class HS5ManuaApi {
 
     public void manuaUpLoadZip(final Context context) {
 
-        String url = EVManuaConfig.getManuaDownLoadUrl(context);
+        String url = HS5ManuaConfig.getManuaDownLoadUrl(context);
 
 //        Log.e("tag", "saveFile = " + saveFile);
         Log.e("tag", "url = " + url);
         HS5ManuaSetActivity.downLoad_view.setVisibility(View.VISIBLE);
 
         DownloadManager.getInstance(context).add(HS5ManuaSetActivity.entry);
-//        String url = EVManuaConfig.getManuaDownLoadUrl(context);
+//        String url = HS5ManuaConfig.getManuaDownLoadUrl(context);
 //        final File saveFile = new File(LibIOUtil.getDefaultUploadZipPath(context));
 //        Log.e("tag", "saveFile = " + saveFile);
 //        Log.e("tag", "url = " + url);
@@ -116,7 +116,7 @@ public class HS5ManuaApi {
 //                                HS5SharedpreferencesUtil.setHaveLocal(HS5ManualWebActivity.context, "1");
 //                                HS5SharedpreferencesUtil.setModelLocal(context, HS5SharedpreferencesUtil.getCarModel(context));
 //                                HS5SharedpreferencesUtil.setCarMode(context, "0");
-//                                HS5SharedpreferencesUtil.setVersion(context, EVManuaConfig.VERSION);
+//                                HS5SharedpreferencesUtil.setVersion(context, HS5ManuaConfig.VERSION);
 //                                saveFile.delete();
 //                                Intent intent = new Intent(HS5ManuaSetActivity.context, HS5ManualWebActivity.class);
 //                                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -135,7 +135,7 @@ public class HS5ManuaApi {
 
     public void manuaDownLoadZip(final Context context) {
 
-        String url = EVManuaConfig.getManuaDownLoadUrl(context);
+        String url = HS5ManuaConfig.getManuaDownLoadUrl(context);
 
 //        Log.e("tag", "saveFile = " + saveFile);
         Log.e("tag", "url = " + url);
@@ -199,7 +199,7 @@ public class HS5ManuaApi {
 //                                HS5SharedpreferencesUtil.setHaveLocal(HS5ManualWebActivity.context, "1");
 //                                HS5SharedpreferencesUtil.setModelLocal(context, HS5SharedpreferencesUtil.getCarModel(context));
 //                                HS5SharedpreferencesUtil.setCarMode(context, "0");
-//                                HS5SharedpreferencesUtil.setVersion(context, EVManuaConfig.VERSION);
+//                                HS5SharedpreferencesUtil.setVersion(context, HS5ManuaConfig.VERSION);
 //                                saveFile.delete();
 //                                Intent intent = new Intent(HS5ManuaSetActivity.context, HS5ManualWebActivity.class);
 //                                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);

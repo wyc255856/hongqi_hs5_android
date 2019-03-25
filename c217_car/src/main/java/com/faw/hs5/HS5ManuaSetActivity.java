@@ -28,7 +28,7 @@ import android.widget.Toast;
 import com.faw.hs5.util.FireUtil;
 import com.faw.hs5.util.LibIOUtil;
 import com.faw.hs5.util.LogUtil;
-import com.faw.hs5.util.EVManuaConfig;
+import com.faw.hs5.util.HS5ManuaConfig;
 import com.faw.hs5.util.HS5NativeInterface;
 import com.faw.hs5.util.HS5SharedpreferencesUtil;
 import com.gh1.ghdownload.DownloadConfig;
@@ -95,7 +95,7 @@ public class HS5ManuaSetActivity extends Activity {
 //            webView.setLayerType(View.LAYER_TYPE_SOFTWARE,null);
 //        }
         setContentView(R.layout.hs5_activity_web);
-        entry = new DownloadEntry(EVManuaConfig.getManuaDownLoadUrl(this));
+        entry = new DownloadEntry(HS5ManuaConfig.getManuaDownLoadUrl(this));
         DownloadConfig.DOWNLOAD_PATH = LibIOUtil.getDefaultPath(this);
 
         entry.name = LibIOUtil.UPLOAD_ZIP_FILE;
@@ -179,11 +179,11 @@ public class HS5ManuaSetActivity extends Activity {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
 //                if ("0".equals(HS5SharedpreferencesUtil.getCarMode(HS5ManualWebActivity.this))) {
-//                    LogUtil.logError("EVManuaConfig.getManuaUrl(context) = " + EVManuaConfig.getManuaUrl(context));
+//                    LogUtil.logError("HS5ManuaConfig.getManuaUrl(context) = " + HS5ManuaConfig.getManuaUrl(context));
 //                    view.loadUrl("file:///"+ LibIOUtil.getDefaultPath(context)+"C217_1");
 //                } else {
-//                    LogUtil.logError("EVManuaConfig.getManuaUrl(context) = " + EVManuaConfig.getManuaUrl(context));
-//                    view.loadUrl(EVManuaConfig.getManuaUrl(context));
+//                    LogUtil.logError("HS5ManuaConfig.getManuaUrl(context) = " + HS5ManuaConfig.getManuaUrl(context));
+//                    view.loadUrl(HS5ManuaConfig.getManuaUrl(context));
 ////            webView.loadUrl("http://www.haoweisys.com/C217/C217_1");
 //                }
                 return true;
@@ -407,7 +407,7 @@ public class HS5ManuaSetActivity extends Activity {
                                     HS5SharedpreferencesUtil.setHaveLocal(HS5ManualWebActivity.context, "1");
                                     HS5SharedpreferencesUtil.setModelLocal(context, HS5SharedpreferencesUtil.getCarModel(context));
                                     HS5SharedpreferencesUtil.setCarMode(context, "0");
-                                    HS5SharedpreferencesUtil.setVersion(context, EVManuaConfig.VERSION);
+                                    HS5SharedpreferencesUtil.setVersion(context, HS5ManuaConfig.VERSION);
                                     saveFile.delete();
                                     Intent intent = new Intent(HS5ManuaSetActivity.context, HS5ManualWebActivity.class);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -472,7 +472,7 @@ public class HS5ManuaSetActivity extends Activity {
                                 HS5SharedpreferencesUtil.setHaveLocal(HS5ManualWebActivity.context, "1");
                                 HS5SharedpreferencesUtil.setModelLocal(context, HS5SharedpreferencesUtil.getCarModel(context));
                                 HS5SharedpreferencesUtil.setCarMode(context, "0");
-                                HS5SharedpreferencesUtil.setVersion(context, EVManuaConfig.VERSION);
+                                HS5SharedpreferencesUtil.setVersion(context, HS5ManuaConfig.VERSION);
                                 saveFile.delete();
                                 Intent intent = new Intent(HS5ManuaSetActivity.context, HS5ManualWebActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);

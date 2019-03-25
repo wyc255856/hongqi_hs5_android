@@ -56,7 +56,7 @@ public class HS5TargetService extends Service {
 //
 //                Intent intent = new Intent(HS5ManualWebActivity.context, HS5ManuaSetActivity.class);
 //                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//                intent.putExtra("url", EVManuaConfig.getManuaUrl(HS5ManualWebActivity.context) + "/pages/search.html?keyWord=" + feature);
+//                intent.putExtra("url", HS5ManuaConfig.getManuaUrl(HS5ManualWebActivity.context) + "/pages/search.html?keyWord=" + feature);
 //                HS5ManualWebActivity.context.startActivity(intent);
 //                return false;
 //            }
